@@ -93,7 +93,7 @@ public class GoData {
 
     public void setHeader(StorageMap header) {
 
-        this.header = header;
+        this.header = header; //
     }
 
     public void setGoInformation(StorageMap goInformation) {
