@@ -9,19 +9,17 @@ public class ProcessExcelData {
 
     private GoData goData;
     private String fileName;
-    private int sheetindex;
     private int dataIndex;
     private List<String[]> testData;
 
-    public ProcessExcelData(String fileName, int sheetIndex) throws Exception {
+    public ProcessExcelData(String fileName) throws Exception {
         goData = new GoData();
         this.fileName = fileName;
-        this.sheetindex = sheetIndex;
         testData = new ReadExcelFile("", 1).getData();
     }
 
     public GoData parseExcelFile() throws Exception {
-        for(dataIndex=0; dataIndex<testData.size(); dataIndex ++)
+        for(dataIndex=1; dataIndex<testData.size(); dataIndex ++)
            addData(testData.get(dataIndex)[0]);
         return goData;
     }
@@ -62,19 +60,34 @@ public class ProcessExcelData {
         StorageMap storageData = new StorageMap();
 
         storageData.addValue("", "");
-        int blankCount=0;
-
+        int blankCount = 0;
         do
         {
             String header = testData.get(dataIndex)[0].trim();
-            String keyValue = testData.get(dataIndex)[1].trim();
-            String pairValue = testData.get(dataIndex)[2].trim();
-
+            if(header.isEmpty())
+            {
+                dataIndex++;
+                blankCount ++;
+            }
+            else
+            {
+                storageData.setTitle(header);
+                do
+                {
+                    String keyValue = testData.get(dataIndex)[1].trim();
+                    String pairValue = testData.get(dataIndex)[2].trim();
+                    storageData.addValue(keyValue, pairValue);
+                    dataIndex++;
+                }
+                while (!testData.get(dataIndex)[1].isEmpty());
+            }
         }
-        while (blankCount < 3);
 
-            if(!testData.get(dataIndex)[1].trim().equals(""))
-                storageData.addValue("3","3");
+        //
+
+        while (blankCount < 2);
+
+
 
         return storageData;
     }
@@ -85,9 +98,8 @@ public class ProcessExcelData {
     private List <StorageMap> getKeyValuePairList()
     {
         List<StorageMap> testData = new ArrayList <>();
-        /*
 
-         */
+
         return testData;
     }
 

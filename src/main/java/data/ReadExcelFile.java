@@ -25,14 +25,19 @@ public class ReadExcelFile {
         Workbook workbook = new Workbook(fileName);
         String newFileName = fileName.replace(".xlsx", ".csv");
         int numberOfSheets =  workbook.getWorksheets().getCount();
+
+        // Check only when the number of sheets is more than 1
         if(numberOfSheets >1)
         {
             NameCollection worksheetNames = workbook.getWorksheets().getNames();
             for(int i=0; i<numberOfSheets; i++)
             {
-                // stop when the worksheet is reached
+                // Stop looping if the worksheet is found
+                if(worksheetNames.get(i).getText().contains(operationName))
+                    break; // stop when the worksheet is reached
+
             }
-        }//
+        }
 
         workbook.save( newFileName, SaveFormat.CSV);
         return newFileName;
