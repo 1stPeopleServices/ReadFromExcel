@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 public class StorageMap {
 
-    private Map <String, String> attributesInfo; //
+    private Map <String, String> attributesInfo;
 
     public StorageMap()
     {
