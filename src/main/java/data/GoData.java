@@ -1,134 +1,67 @@
 package data;
 
+import data.data.*;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class GoData {
 
-    private StorageMap header;
-
-    private StorageMap goInformation;
-
-    private List <StorageMap> stagingConfigCollection;
-
-    private List<StorageMap> scoringConfigCollection;
-
-    private List<List<StorageMap>> roleConfigurationCollection;
-
-    private List<List<StorageMap>> assessmentSharingCollection;
-
-    private List<List<StorageMap>> documentPackageCollection;
-
-    private List<StorageMap> questionaireCollection;
-
-    private List<StorageMap> templateType;
-
-    private StorageMap changes;
+    private Header header;
+    private GoInformation goInformation;
+    private StagingConfiguration stagingConfiguration1;
+    private StagingConfiguration stagingConfiguration2;
+    private ScoringConfiguration scoringConfiguration1;
+    private ScoringConfiguration scoringConfiguration2;
+    private RoleConfigurations roleConfigurations1;
+    private RoleConfigurations roleConfigurations2;
+    private AssessmentSharings assessmentSharings1;
+    private AssessmentSharings assessmentSharings2;
+    private DocumentPackages documentPacakages1;
+    private DocumentPackages documentPacakages2;
+    private QuestionaireList questionaires1;
+    private QuestionaireList questionaires2;
+    private TemplateTypes templateTypes;
 
     public GoData()
     {
-        header = new StorageMap();
-
-        goInformation = new StorageMap();
-
-        stagingConfigCollection = new ArrayList <StorageMap>();
-
-        scoringConfigCollection= new ArrayList <StorageMap>();
-
-        roleConfigurationCollection= new ArrayList <List <StorageMap>>();
-
-        assessmentSharingCollection= new ArrayList <List <StorageMap>>();
-
-        documentPackageCollection= new ArrayList <List <StorageMap>>();
-
-        questionaireCollection= new ArrayList <StorageMap>();
-
-        templateType= new ArrayList <StorageMap>();
-
-        changes = new StorageMap();
-
+        header = new Header();
+        goInformation = new GoInformation();
+        stagingConfiguration1= new StagingConfiguration();
+        stagingConfiguration2= new StagingConfiguration();
+        scoringConfiguration1 = new ScoringConfiguration();
+        scoringConfiguration2 = new ScoringConfiguration();
+        roleConfigurations1 = new RoleConfigurations();
+        roleConfigurations2 = new RoleConfigurations();
+        assessmentSharings1 = new AssessmentSharings();
+        assessmentSharings2 = new AssessmentSharings();
+        documentPacakages1 = new DocumentPackages();
+        documentPacakages2 = new DocumentPackages();
+        questionaires1 = new QuestionaireList();
+        templateTypes = new TemplateTypes();
     }
 
 
-    public StorageMap getHeader() {
-        return header;
+    public void setScoringConfiguration1(String[] line)
+    {
+        scoringConfiguration1.processLine(line);
     }
 
-    public StorageMap getGoInformation() {
-        return goInformation;
+    public void setScoringConfiguration2(String[] line)
+    {
+        scoringConfiguration2.processLine(line);
     }
 
-    public List <StorageMap> getStagingConfigCollection() {
-        return stagingConfigCollection;
-    }
-
-    public List  <StorageMap> getScoringConfigCollection() {
-        return scoringConfigCollection;
-    }
-
-    public List <List <StorageMap>> getRoleConfigurationCollection() {
-        return roleConfigurationCollection;
-    }
-
-    public List <List <StorageMap>> getAssessmentSharingCollection() {
-        return assessmentSharingCollection;
-    }
-
-    public List <List <StorageMap>> getDocumentPackageCollection() {
-        return documentPackageCollection;
-    }
-
-    public List <StorageMap> getQuestionaireCollection() {
-        return questionaireCollection;
-    }
-
-    public List <StorageMap> getTemplateType() {
-        return templateType;
-    }
-
-    public StorageMap getChanges() {
-        return changes;
+    public void setDocumentPackages(String[] line)
+    {
     }
 
 
-    public void setHeader(StorageMap header) {
 
-        this.header = header; //
-    }
-
-    public void setGoInformation(StorageMap goInformation) {
-        this.goInformation = goInformation;
-    }
-
-    public void addStagingConfig(StorageMap stagingConfig) {
-        stagingConfigCollection.add(stagingConfig);
-    }
-
-    public void addScoringConfig(StorageMap scoringConfig) {
-        scoringConfigCollection.add(scoringConfig);
-    }
-
-    public void addRoleConfig(List <StorageMap> roleConfig) {
-        roleConfigurationCollection.add(roleConfig);
-    }
-
-    public void addAssessmentSharing(List <StorageMap> assessmentSharing) {
-        assessmentSharingCollection.add(assessmentSharing);
-    }
-
-    public void addDocumentPackage(List <StorageMap> documentPackage) {
-        documentPackageCollection.add(documentPackage);
-    }
-
-    public void addQuestionaire(StorageMap questionaire) {
-        questionaireCollection.add(questionaire);
-    }
-
-    public void setTemplateType(List<StorageMap> templateType) {
-        this.templateType = templateType;
-    }
-
-    public void setChanges(StorageMap changes) {
-        this.changes = changes;
+    public void setHeader(String[] line)
+    {
+        header.processLine(line);
     }
 }

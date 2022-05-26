@@ -32,6 +32,11 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.20</version>
+    </dependency>
 
     <dependency>
       <groupId>com.opencsv</groupId>
@@ -44,6 +49,7 @@
       <artifactId>aspose-cells</artifactId>
       <version>20.8</version>
     </dependency>
+
 
   </dependencies>
 
@@ -91,5 +97,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
