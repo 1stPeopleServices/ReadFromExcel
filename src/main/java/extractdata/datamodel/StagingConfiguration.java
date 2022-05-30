@@ -1,4 +1,4 @@
-package data.data;
+package extractdata.datamodel;
 
 import lombok.Data;
 

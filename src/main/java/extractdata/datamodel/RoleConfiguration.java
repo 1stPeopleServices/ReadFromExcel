@@ -1,4 +1,4 @@
-package data.data;
+package extractdata.datamodel;
 
 import lombok.Data;
 
@@ -6,24 +6,27 @@ import lombok.Data;
 public class RoleConfiguration {
 
     private String assessorRoles;
+    private String scoringComponent;
     private String assessmentForm;
 
-    public RoleConfiguration processLine(String[] line, String[] title)
-    {
+    public RoleConfiguration addData(String[] title, String[] line) {
+
         for(int i=1; i<title.length; i++)
             processKeyPair(title[i], line[i]);
 
         return this;
     }
 
-    public RoleConfiguration processKeyPair(String keyValue,
+    public void processKeyPair(String keyValue,
                                                String pairValue)
     {
         if (keyValue.trim().equalsIgnoreCase("Assesor Roles"))
             setAssessorRoles(pairValue);
+        if (keyValue.trim().equalsIgnoreCase("Scoring Component"))
+            setScoringComponent(pairValue);
         if (keyValue.trim().equalsIgnoreCase("Assessment Form"))
             setAssessmentForm(pairValue);
-        return this;
     }
+
 
 }

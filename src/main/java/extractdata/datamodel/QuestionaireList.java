@@ -1,4 +1,4 @@
-package data.data;
+package extractdata.datamodel;
 
 import lombok.Data;
 
@@ -16,7 +16,12 @@ public class QuestionaireList {
         questionaireList = new ArrayList <>();
     }
 
-    public void setQuestionaires(String line) {
-
+    public void addQuestionaire(String[] line) {
+        Questionaire questionaire =
+                new Questionaire();
+        if(title==null)
+            title = line;
+        else
+            questionaireList.add(questionaire.addData(title, line));
     }
 }
